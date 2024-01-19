@@ -81,6 +81,26 @@ it('should have necessary UI elements for adding a book', () => {
         .should('equal', 201);
     });
   });
+
+  describe('Read Operation', () => {
+    it('should get all books', () => {
+      cy.request('GET', '/api/books')
+        .its('status')
+        .should('equal', 200)
+        .its('body.count')
+        .should('be.gte', 0);
+    });
+  
+    it('should get a specific book by ID', () => {
+      // Assuming you have a book ID in your database
+      const bookId = 'your_book_id';
+  
+      cy.request(`GET`, `/api/books/${bookId}`)
+        .its('status')
+        .should('equal', 200);
+    });
+  });
+  
   
   
   
