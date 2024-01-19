@@ -39,4 +39,15 @@ it('should have necessary UI elements for adding a book', () => {
     cy.visit('/books');
     cy.get('.edit-button').should('exist');
   });
+
+  it('should edit an existing book successfully', () => {
+    cy.visit('/books');
+    cy.get('.edit-button').first().click();
+    cy.get('#title-input').clear().type('Updated Book Title');
+    cy.get('#author-input').clear().type('Jane Doe');
+    cy.get('#save-button').click();
+    cy.contains('Book updated successfully').should('exist');
+    cy.contains('Updated Book Title by Jane Doe').should('exist');
+  });
+  
   
