@@ -34,3 +34,9 @@ it('should have necessary UI elements for adding a book', () => {
     cy.contains('Book deleted successfully').should('exist');
     cy.get('.book-item').should('have.length', 1);
   });
+
+  it('should have necessary UI elements for editing a book', () => {
+    cy.visit('/books');
+    cy.get('.edit-button').should('exist');
+  });
+  
