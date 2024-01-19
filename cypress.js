@@ -59,5 +59,14 @@ it('should have necessary UI elements for adding a book', () => {
     cy.get('.book-item').first().click();
     cy.contains('Updated Book Title by Jane Doe').should('exist');
   });
+
+  describe('Backend Connection', () => {
+    it('should connect to the backend successfully', () => {
+      cy.request('/api') // Assuming your backend API is at the root path '/api'
+        .its('status')
+        .should('equal', 200);
+    });
+  });
+  
   
   
