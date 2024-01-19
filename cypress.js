@@ -100,6 +100,24 @@ it('should have necessary UI elements for adding a book', () => {
         .should('equal', 200);
     });
   });
+
+  describe('Update Operation', () => {
+    it('should update a book', () => {
+      // Assuming you have a book ID in your database
+      const bookId = 'your_book_id';
+  
+      const updatedBook = {
+        title: 'Updated Book Title',
+        author: 'Updated Author',
+        publishYear: 2025,
+      };
+  
+      cy.request('PUT', `/api/books/${bookId}`, updatedBook)
+        .its('status')
+        .should('equal', 200);
+    });
+  });
+  
   
   
   
