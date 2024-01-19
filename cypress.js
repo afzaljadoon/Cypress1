@@ -27,3 +27,10 @@ it('should have necessary UI elements for adding a book', () => {
     cy.url().should('include', '/books/');
     cy.get('.book-details').should('exist');
   });
+
+  it('should delete a book successfully', () => {
+    cy.visit('/books');
+    cy.get('.book-item').first().find('.delete-button').click();
+    cy.contains('Book deleted successfully').should('exist');
+    cy.get('.book-item').should('have.length', 1);
+  });
