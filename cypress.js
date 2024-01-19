@@ -118,6 +118,17 @@ it('should have necessary UI elements for adding a book', () => {
     });
   });
   
+  describe('Delete Operation', () => {
+    it('should delete a book', () => {
+      // Assuming you have a book ID in your database
+      const bookId = 'your_book_id';
+  
+      cy.request('DELETE', `/api/books/${bookId}`)
+        .its('status')
+        .should('equal', 200);
+    });
+  });
+  
   
   
   
