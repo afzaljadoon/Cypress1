@@ -14,3 +14,9 @@ it('should have necessary UI elements for adding a book', () => {
     cy.contains('Sample Book by John Doe').should('exist');
   });
   
+  it('should show validation messages for missing data', () => {
+    cy.visit('/add-book');
+    cy.get('#submit-button').click();
+    cy.contains('Please enter a title').should('exist');
+    cy.contains('Please enter an author').should('exist');
+  });
