@@ -67,6 +67,20 @@ it('should have necessary UI elements for adding a book', () => {
         .should('equal', 200);
     });
   });
+
+  describe('Create Operation', () => {
+    it('should create a new book', () => {
+      const newBook = {
+        title: 'New Book',
+        author: 'New Author',
+        publishYear: 2024,
+      };
+  
+      cy.request('POST', '/api/books', newBook)
+        .its('status')
+        .should('equal', 201);
+    });
+  });
   
   
   
