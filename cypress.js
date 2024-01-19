@@ -20,3 +20,10 @@ it('should have necessary UI elements for adding a book', () => {
     cy.contains('Please enter a title').should('exist');
     cy.contains('Please enter an author').should('exist');
   });
+
+  it('should display book details on click', () => {
+    cy.visit('/books');
+    cy.get('.book-item').first().click();
+    cy.url().should('include', '/books/');
+    cy.get('.book-details').should('exist');
+  });
